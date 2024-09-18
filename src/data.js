@@ -499,9 +499,7 @@ export const cryptoData = {
       twitterUrl: 'https://twitter.com/dfinity',
       contractAddress: 'ryjl3-tyaaa-aaaaa-aaaba-cai',
       decimals: 18,
-      explorers: [
-        'https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai',
-      ],
+      explorers: ['https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai'],
     },
     {
       id: 'shiba-inu',
@@ -620,6 +618,12 @@ export const cryptoAssets = [
     id: 'ethereum',
     amount: 5,
     price: 2400,
+    date: new Date(),
+  },
+  {
+    id: 'dogecoin',
+    amount: 10000,
+    price: 0.076,
     date: new Date(),
   },
 ]
