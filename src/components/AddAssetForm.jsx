@@ -96,7 +96,7 @@ export default function AddAssetForm({ onClose }) {
         span: 10,
       }}
       style={{
-        maxWidth: 600,
+        maxWidth: '600px',
       }}
       initialValues={{
         price: +coin.price.toFixed(2),

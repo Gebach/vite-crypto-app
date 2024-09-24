@@ -18,6 +18,7 @@ export function CryptoContextProvider({ children }) {
       const coin = result.find(c => c.id === asset.id)
 
       return {
+        name: coin.name,
         grow: asset.price < coin.price,
         growPercent: percentDifference(asset.price, coin.price),
         totalAmount: asset.amount * coin.price,
