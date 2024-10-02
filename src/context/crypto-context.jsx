@@ -12,6 +12,8 @@ export function CryptoContextProvider({ children }) {
   const [loading, setLoading] = useState(false)
   const [crypto, setCrypto] = useState([])
   const [assets, setAssets] = useState([])
+  const [coins, setCoins] = useState([])
+  const [selectedCoin, setSelectedCoin] = useState({})
 
   function mapAssets(assets, result) {
     return assets.map(asset => {
@@ -38,13 +40,29 @@ export function CryptoContextProvider({ children }) {
       setLoading(false)
     })()
     // preload()
+
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        'X-API-KEY': 'knS5qJgk/geryKs9C4y/4mcm6Ao9MzilyUll+a6c8xs=',
+      },
+    }
+
+    fetch(`https://openapiv1.coinstats.app/coins`, options)
+      .then(res => res.json())
+      .then(res => {
+        setCoins(res.result)
+      })
   }, [])
 
   function addAsset(newAsset) {
     setAssets(prev => mapAssets([...prev, newAsset], crypto))
   }
 
-  return <CryptoContext.Provider value={{ loading, crypto, assets, addAsset }}>{children}</CryptoContext.Provider>
+  return (
+    <CryptoContext.Provider value={{ loading, crypto, assets, addAsset, coins }}>{children}</CryptoContext.Provider>
+  )
 }
 
 export default CryptoContext

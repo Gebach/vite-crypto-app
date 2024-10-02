@@ -1,9 +1,8 @@
 import { Layout, Spin } from 'antd'
-import AppSider from './AppSider'
-import AppHeader from './AppHeader'
-import AppContent from './AppContent'
+import AppHeader from './Header/AppHeader'
 import { useContext } from 'react'
 import CryptoContext from '../../context/crypto-context'
+import { Outlet } from 'react-router-dom'
 
 export default function AppLayout() {
   const { loading } = useContext(CryptoContext)
@@ -16,8 +15,7 @@ export default function AppLayout() {
     <Layout>
       <AppHeader />
       <Layout>
-        <AppSider />
-        <AppContent />
+        <Outlet />
       </Layout>
     </Layout>
   )

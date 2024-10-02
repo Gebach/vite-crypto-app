@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Layout, Select, Space, Button, Modal, Drawer } from 'antd'
-import { useCrypto } from '../../context/crypto-context'
-import CoinInfoModal from '../CoinInfoModal'
-import AddAssetForm from '../AddAssetForm'
+import { useCrypto } from '../../../context/crypto-context'
+import CoinInfoModal from '../../CoinInfoModal'
+import AddAssetForm from '../../AddAssetForm'
+import { NavLink } from 'react-router-dom'
+import classes from './header.module.css'
 
 const headerStyle = {
   width: '100%',
@@ -37,27 +39,35 @@ export default function AppHeader() {
 
   return (
     <Layout.Header style={headerStyle}>
-      <Select
-        style={{
-          width: '250px',
-        }}
-        onSelect={handleSelect}
-        onClick={() => setSelect(prev => !prev)}
-        open={select}
-        value="press / to open"
-        optionLabelProp="label"
-        options={crypto.map(coin => ({
-          label: coin.name,
-          value: coin.id,
-          icon: coin.icon,
-        }))}
-        optionRender={option => (
-          <Space>
-            <img style={{ width: 20 }} src={option.data.icon} title={option.data.label} alt={option.data.label} />{' '}
-            {option.data.label}
-          </Space>
-        )}
-      />
+      <div>
+        <Select
+          style={{
+            width: '250px',
+          }}
+          onSelect={handleSelect}
+          onClick={() => setSelect(prev => !prev)}
+          open={select}
+          value="press / to open"
+          optionLabelProp="label"
+          options={crypto.map(coin => ({
+            label: coin.name,
+            value: coin.id,
+            icon: coin.icon,
+          }))}
+          optionRender={option => (
+            <Space>
+              <img style={{ width: 20 }} src={option.data.icon} title={option.data.label} alt={option.data.label} />{' '}
+              {option.data.label}
+            </Space>
+          )}
+        />
+        <NavLink className={classes.headerLink} to={'/'}>
+          Home
+        </NavLink>
+        <NavLink className={classes.headerLink} to={'/coins'}>
+          Coins list
+        </NavLink>
+      </div>
 
       <Button type="primary" onClick={() => setDrawer(true)}>
         Add Asset
