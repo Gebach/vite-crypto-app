@@ -1,8 +1,9 @@
-import { Layout, Spin } from 'antd'
+import { Breadcrumb, Layout, Spin } from 'antd'
 import AppHeader from './Header/AppHeader'
 import { useContext } from 'react'
 import CryptoContext from '../../context/crypto-context'
 import { Outlet } from 'react-router-dom'
+import Breadcrumbs from '../breadcrumbs/Breadcrumbs'
 
 export default function AppLayout() {
   const { loading } = useContext(CryptoContext)
@@ -14,8 +15,9 @@ export default function AppLayout() {
   return (
     <Layout>
       <AppHeader />
-      <Layout>
-        <Outlet />
+      <Layout className="container">
+        <Breadcrumbs />
+        <Outlet style={{ maxWidth: '1200px', width: '100%', margin: 'auto' }} />
       </Layout>
     </Layout>
   )

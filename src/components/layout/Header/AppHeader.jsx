@@ -67,6 +67,9 @@ export default function AppHeader() {
         <NavLink className={classes.headerLink} to={'/coins'}>
           Coins list
         </NavLink>
+        <NavLink className={classes.headerLink} to={'/contact'}>
+          Contact Us
+        </NavLink>
       </div>
 
       <Button type="primary" onClick={() => setDrawer(true)}>

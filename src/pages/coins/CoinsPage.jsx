@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useCrypto } from '../context/crypto-context'
+import { useCrypto } from '../../context/crypto-context'
 import { List, Typography, Button, Skeleton, Avatar } from 'antd'
 import { NavLink } from 'react-router-dom'
 
@@ -38,6 +38,7 @@ export default function CoinsPage() {
         setInitLoading(false)
         setData(res.result)
         setList(res.result)
+        console.log(res)
       })
       .catch(err => {
         setError('Network Error. Please try again later')
@@ -48,6 +49,7 @@ export default function CoinsPage() {
     setList(
       data.concat(
         [...new Array(10)].map(() => ({
+          id,
           loading: true,
           name: {},
           icon: {},
@@ -99,7 +101,7 @@ export default function CoinsPage() {
             <List.Item.Meta
               avatar={<Avatar size={'medium'} src={item.icon} />}
               title={
-                <NavLink onClick={handleOnClick} to={`/coins/${item.id}`}>
+                <NavLink onClick={handleOnClick} to={`${item.id.toString()}`}>
                   {item.name}
                 </NavLink>
               }
