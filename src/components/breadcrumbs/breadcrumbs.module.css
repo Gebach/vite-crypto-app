@@ -1,0 +1,21 @@
+.breadcrumbs {
+  display: flex;
+  gap: 10px;
+}
+
+.crumb::after {
+  content: '|';
+  margin-left: 10px;
+}
+
+.crumb:last-child::after {
+  display: none;
+}
+
+.crumb a {
+  color: #000;
+}
+
+.crumb a:hover {
+  opacity: 0.4;
+}
