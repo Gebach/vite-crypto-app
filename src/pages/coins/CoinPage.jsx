@@ -38,6 +38,9 @@ export default function CoinPage() {
       <p className="scale-0 group-hover:scale-100 text-center transition-all duration-200 ease-out">
         Price: {coin.price.toFixed(2)}$
       </p>
+    <div>
+      <h2>Coin {coin.id}</h2>
+      <p>Price: {coin.price.toFixed(2)}$</p>
     </div>
   )
 }
